@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="{% static 'css/mainpage.css' %}">
+    <meta charset="utf-8">
+    <title>FIRE 3.0</title>
+  </head>
+  <body>
+    <div class="topnav">
+  <a class="active" href="{% url 'basic_app:mainpage' %}">Home</a>
+  <a href="{% url 'basic_app:news' %}">News</a>
+  <a href="{% url 'basic_app:upload' %}">Upload satellite image</a>
+  <a href="{% url 'basic_app:map' %}">Map</a>
+  <a href="{% url 'basic_app:notify' %}">Notify Local Officials</a>
+  {% if user.is_authenticated %}
+		<a href="{% url 'logout' %}">Logout</a>
+		{% endif %}
+</div>
+<p id="hcenter" style="color:black;font-size:45px;">FIRE 3.0</p>
+
+<p style="color:black;font-size:22px;">A wildfire, wildland fire or rural fire is an unplanned, unwanted, uncontrolled fire in an area of combustible vegetation starting in rural areas.Depending on the type of vegetation present, a wildfire can also be classified more specifically as a forest fire, brush fire, bushfire (in Australia), desert fire, grass fire, hill fire, peat fire, prairie fire, vegetation fire, or veld fire.Many organizations consider wildfire to mean an unplanned and unwanted fire,while wildland-fire is a broader term that includes prescribed fire as well as wildland fire use (WFU; these are also called monitored response fires).</p>
+
+<p style="color:black;font-size:25px;">Some facts about wildfires are:</p>
+<ul>
+	<li style="color:black;font-size:22px;">
+A wildfire (AKA forest or peat fire) is an uncontrolled fire. Wildfires often occur in (duh) wild, unpopulated areas, but they can occur anywhere and harm homes, agriculture, humans, and animals in their path</li>
+<li style="color:black;font-size:22px;">90% of all wildfires are started by humans.</li>
+<li style="color:black;font-size:22px;">One of the largest fires in recent history was in 1825 when a fire tore through Maine and New Brunswick, Canada, burning 3 million acres of forest.</li>
+<li style="color:black;font-size:22px;">Lightning strikes the earth over 100,000 times a day. 10 to 20% of these lightning strikes can cause fire.</li>
+<li style="color:black;font-size:22px;">An average of 1.2 million acres of US woodland burn every year.</li>
+</ul>
+<h3>SOURCE: wikipedia & dosomething.org</h3>
+
+
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="{% static 'css/news.css' %}">
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="topnav">
+  <a  href="{% url 'basic_app:mainpage' %}">Home</a>
+  <a class="active" href="{% url 'basic_app:news' %}">News</a>
+  <a href="{% url 'basic_app:upload' %}">Upload satellite image</a>
+  <a href="{% url 'basic_app:map' %}">Map</a>
+  <a href="{% url 'basic_app:notify' %}">Notify Local Officials</a>
+  {% if user.is_authenticated %}
+  <a href="{% url 'logout' %}">Logout</a>
+  {% endif %}
+</div>
+<h1>POST UPDATES</h1>
+
+<form action="#">
+<label for="w3review">Write News</label>
+<textarea id="w3review" name="w3review" rows="4" cols="50">
+  </textarea>
+  <br><br>
+  <input type="submit" value="Submit">
+</form>
+<hr>
+<h2>UPDATE 1:</h2>
+<p>Wind is blowing towards the east hence it is recommended that civilians be told to evacuate accordingly. </p>
+<button onclick="myFunction()">OPEN FIRE MAP</button>
+<script>
+function myFunction(){
+  window.open("https://firms.modaps.eosdis.nasa.gov/map/#d:2020-09-26..2020-09-27;@0.0,0.0,3z");
+}
+
+</script>
+  </body>
+</html>

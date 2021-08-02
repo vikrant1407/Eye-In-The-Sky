@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <style>
+      body{
+        background-color:orange;
+      }
+      #comp1{
+        text-align: right;
+  border: 2px solid #4CAF50;
+  margin-left: 50px;
+      }
+      #b1{
+  
+  margin-left: 100px;
+      }
+    </style>
+  	<title> Fire 3.0 File-upload </title>
+    <link rel="stylesheet" href="{% static 'css/upload.css' %}">
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <div class="topnav">
+  <a  href="{% url 'basic_app:mainpage' %}">Home</a>
+  <a href="{% url 'basic_app:news' %}">News</a>
+  <a class="active" href="{% url 'basic_app:upload' %}">Upload satellite image</a>
+  <a href="{% url 'basic_app:map' %}">Map</a>
+  <a href="{% url 'basic_app:notify' %}">Notify Local Officials</a>
+  {% if user.is_authenticated %}
+  <a href="{% url 'logout' %}">Logout</a>
+  {% endif %}
+</div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div id="center">
+            <h1 id="tc">FILE UPLOAD SECTION</h1>
+            <h3 id="tc2">SELECT THE FILE AND CLICK SUBMIT</h3>
+            <hr>
+
+
+          </div>
+          <form method="POST">
+            {% csrf_token %}
+          <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+          <p id="p123"><label for="file" style="cursor: pointer;">CLICK TO UPLOAD IMAGE</label></p>
+
+          <p><img id="output" width="300" /></p>
+          <br>
+          <input id="b1" type="submit">
+          <button id="comp1"> <a href="{% url 'basic_app:new' %}">Predict</a></button>
+           </form>
+          
+          
+        </div>
+
+      </div>
+
+    </div>
+   
+    <script>
+    var loadFile = function(event) {
+      var image = document.getElementById('output');
+      image.src = URL.createObjectURL(event.target.files[0]);
+    };
+    </script>
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
+</html>
